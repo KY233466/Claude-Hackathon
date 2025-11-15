@@ -18,14 +18,20 @@
 
 ## 🚀 快速开始
 
-### 1. ✅ API Key 已配置
+### 1. 🔑 配置 API Key
 
-项目已配置 Gemini API Key，可以直接使用！
+**为了保护 API 安全，你需要配置自己的 Gemini API Key：**
 
-**如需更换 API Key：**
-- 打开 `lib/ai.js` 文件
-- 在第 7 行修改 `GEMINI_API_KEY`
-- 获取免费 API Key：https://makersuite.google.com/app/apikey
+1. 打开 `lib/config.js` 文件
+2. 将 `YOUR_API_KEY_HERE` 替换为你的 Gemini API Key
+3. 获取免费 API Key：https://makersuite.google.com/app/apikey
+
+```javascript
+// lib/config.js
+export const GEMINI_API_KEY = 'YOUR_API_KEY_HERE'; // 替换为你的 API key
+```
+
+⚠️ **重要**: API Key 不会被提交到 Git，请放心配置
 
 ### 2. 启动开发服务器
 
