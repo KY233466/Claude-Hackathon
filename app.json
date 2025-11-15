@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "AI ReUse Assistant",
+    "slug": "ai-reuse-assistant",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.aireuse.assistant"
+    },
+    "android": {
+      "package": "com.aireuse.assistant"
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow AI ReUse Assistant to access your photos to identify donated items",
+          "cameraPermission": "Allow AI ReUse Assistant to use the camera to photograph donated items"
+        }
+      ]
+    ]
+  }
+}
