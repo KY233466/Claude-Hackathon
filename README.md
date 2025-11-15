@@ -1,130 +1,169 @@
 # AI ReUse Assistant
 
-一款使用 Expo + React Native 开发的 AI 智能闲置物品管家应用。
+An AI-powered donated item management app built with Expo + React Native.
 
-## 🎯 功能特性
+## 🎯 Features
 
-- **📸 拍照识别捐赠物** - 使用 Claude Vision API 自动识别物品并生成卡片
-- **🔍 语义搜索物品** - 使用自然语言描述需求，AI 智能匹配物品
-- **💾 物品管理** - 保存识别结果到本地库存
-- **🎨 现代化 UI** - 简洁卡片式设计，白底阴影圆角
+- **📸 Image Recognition** - Automatically identify donated items using Gemini Vision API and generate item cards
+- **🔍 Semantic Search** - Use natural language to describe your needs, AI intelligently matches items
+- **💾 Inventory Management** - Save recognition results to local inventory
+- **🎨 Modern UI** - Clean card-based design with shadows and rounded corners
 
-## 📦 技术栈
+## 📦 Tech Stack
 
-- **框架**: Expo SDK 51 + React Native
-- **导航**: React Navigation (Stack Navigator)
+- **Framework**: Expo SDK 50 + React Native 0.73.6
+- **Navigation**: React Navigation (Stack Navigator)
 - **AI**: Google Gemini API (Vision + Semantic Search)
-- **图片**: expo-image-picker
+- **Image Picker**: expo-image-picker
 
-## 🚀 快速开始
+## 🚀 Quick Start
 
-### 1. 🔑 配置 API Key
+### 1. 🔑 Configure API Key
 
-**为了保护 API 安全，你需要配置自己的 Gemini API Key：**
+**To protect API security, you need to configure your own Gemini API Key:**
 
-1. 打开 `lib/config.js` 文件
-2. 将 `YOUR_API_KEY_HERE` 替换为你的 Gemini API Key
-3. 获取免费 API Key：https://makersuite.google.com/app/apikey
+1. Open `lib/config.js` file
+2. Replace `YOUR_API_KEY_HERE` with your Gemini API Key
+3. Get free API Key: https://makersuite.google.com/app/apikey
 
 ```javascript
 // lib/config.js
-export const GEMINI_API_KEY = 'YOUR_API_KEY_HERE'; // 替换为你的 API key
+export const GEMINI_API_KEY = 'YOUR_API_KEY_HERE'; // Replace with your API key
 ```
 
-⚠️ **重要**: API Key 不会被提交到 Git，请放心配置
+⚠️ **Important**: API Keys are not committed to Git, configure with confidence
 
-### 2. 启动开发服务器
+### 2. Install Dependencies
 
-\`\`\`bash
-npx expo start
-\`\`\`
+```bash
+npm install
+```
 
-### 3. 在手机上测试
+### 3. Start Development Server
 
-- 安装 **Expo Go** App（iOS/Android）
-- 扫描终端中显示的二维码
-- 应用将在 Expo Go 中打开
+**⚠️ Important**: Due to Node.js v24 compatibility issues, you need to:
 
-## 📁 项目结构
+**Option 1: Install Watchman (Recommended)**
+```bash
+brew install watchman
+npm start
+```
 
-\`\`\`
+**Option 2: Use Node.js 20**
+```bash
+nvm install 20
+nvm use 20
+npm start
+```
+
+See [FINAL_SOLUTION.md](FINAL_SOLUTION.md) for detailed setup instructions.
+
+### 4. Test on Your Phone
+
+- Install **Expo Go** app (iOS/Android)
+- Scan the QR code displayed in terminal
+- App will open in Expo Go
+
+## 📁 Project Structure
+
+```
 /
-├── App.js                  # 导航容器配置
+├── App.js                  # Navigation container configuration
 ├── screens/
-│   ├── HomeScreen.js       # 首页
-│   ├── ImageScreen.js      # 拍照识别页面
-│   └── SearchScreen.js     # 语义搜索页面
+│   ├── HomeScreen.js       # Home screen
+│   ├── ImageScreen.js      # Image recognition screen
+│   ├── SearchScreen.js     # Semantic search screen
+│   └── ItemDetailScreen.js # Item detail screen
 ├── lib/
-│   └── ai.js               # Claude API 调用逻辑
+│   ├── ai.js              # Gemini API integration
+│   └── config.js          # API configuration
 ├── data/
-│   ├── inventory.js        # 静态库存数据（5个示例）
-│   └── README.md           # 数据说明文档
-├── assets/                 # 应用图标和静态资源
-├── app.json                # Expo 配置
-└── package.json            # 依赖配置
-\`\`\`
+│   ├── inventory.js       # Static inventory data (sample items)
+│   └── README.md          # Data documentation
+├── assets/                # App icons and static resources
+├── app.json               # Expo configuration
+└── package.json           # Dependencies
+```
 
-## 🎮 使用流程
+## 🎮 Usage Flow
 
-### 拍照识别流程
-1. 在首页点击"📸 拍照识别捐赠物"
-2. 选择图片或拍照
-3. 点击"🤖 开始识别"
-4. 查看 AI 生成的物品卡片（名称、类别、状态、描述、价格、标签）
-5. 点击"💾 保存到库存"
+### Image Recognition Flow
+1. Tap "📸 Scan Donation Item" on home screen
+2. Select image or take photo
+3. Tap "🤖 Start Recognition"
+4. View AI-generated item card (name, category, condition, description, tags)
+5. Tap "💾 Save to Inventory"
 
-### 语义搜索流程
-1. 在首页点击"🔍 语义搜索物品"
-2. 输入自然语言查询（如："想要适合小孩的玩具"）
-3. 点击"🔍 智能搜索"
-4. 查看匹配结果（含图片、匹配度、匹配原因、标签）
-5. 点击"📞 联系捐赠者"查看详情
+### Semantic Search Flow
+1. Tap "🔍 Search Items" on home screen
+2. Enter natural language query (e.g., "toys suitable for kids")
+3. Tap "🔍 Smart Search"
+4. View matching results (with images, match reasons, tags)
+5. Tap item card to view details
 
-## 📝 已安装依赖
+## 📝 Dependencies
 
-\`\`\`json
+```json
 {
-  "@react-navigation/native": "^7.1.20",
-  "@react-navigation/stack": "^7.6.4",
-  "expo": "~51.0.0",
-  "expo-image-picker": "^17.0.8",
-  "react-native-safe-area-context": "4.10.5",
-  "react-native-screens": "3.31.1"
+  "@react-navigation/native": "^6.1.9",
+  "@react-navigation/stack": "^6.3.20",
+  "expo": "~50.0.17",
+  "expo-image-picker": "~14.7.1",
+  "react": "18.2.0",
+  "react-native": "0.73.6"
 }
-\`\`\`
+```
 
-## ⚠️ 重要提示
+## ⚠️ Important Notes
 
-1. **API Key 已配置**：项目已配置 Gemini API Key，可直接使用
-2. **网络连接**：需要网络连接才能调用 Gemini API 和加载库存图片
-3. **权限**：首次使用相机和相册时需要授予权限
-4. **免费额度**：Gemini 1.5 Flash 每分钟限制 15 次请求（免费版）
+1. **API Key Configuration**: Configure your own Gemini API Key in `lib/config.js`
+2. **Network Connection**: Internet connection required for Gemini API calls and loading inventory images
+3. **Permissions**: Camera and photo library permissions required on first use
+4. **Free Tier Limits**: Gemini API free tier has rate limits (15 requests per minute)
 
-## 🐛 常见问题
+## 🐛 Troubleshooting
 
-### Q: 图片识别失败
-**A:** 检查：
-1. Gemini API Key 是否有效（已配置在 `lib/ai.js`）
-2. 网络连接是否正常
-3. 图片是否选择成功（查看控制台错误信息）
-4. 是否超出 Gemini 免费额度（每分钟 15 次请求）
+### Q: Image recognition fails
+**A:** Check:
+1. Gemini API Key is valid and configured in `lib/config.js`
+2. Network connection is working
+3. Image was selected successfully (check console for errors)
+4. Not exceeding Gemini free tier limits (15 requests/minute)
 
-### Q: 搜索没有结果
+### Q: Search returns no results
 **A:**
-1. 确保库存中有物品数据（`data/inventory.js`）
-2. 尝试换个描述方式
-3. 检查网络连接
+1. Ensure inventory has item data (`data/inventory.js`)
+2. Try different search terms
+3. Check network connection
 
-### Q: 如何更换为自己的 Gemini API Key？
+### Q: How to replace with my own Gemini API Key?
 **A:**
-1. 访问 https://makersuite.google.com/app/apikey 获取免费 API Key
-2. 打开 `lib/ai.js` 文件
-3. 在第 7 行替换 `GEMINI_API_KEY` 的值
+1. Visit https://makersuite.google.com/app/apikey to get free API Key
+2. Open `lib/config.js` file
+3. Replace the value of `GEMINI_API_KEY`
 
-## 📄 许可证
+### Q: EMFILE: too many open files error
+**A:** This is a Node.js v24 compatibility issue. Solutions:
+1. Install Watchman: `brew install watchman`
+2. Or use Node.js 20: `nvm use 20`
+3. See [FINAL_SOLUTION.md](FINAL_SOLUTION.md) for details
+
+## 🔒 Security
+
+- API keys are not committed to Git
+- See [SECURITY.md](SECURITY.md) for detailed security information
+- `.gitignore` configured to protect sensitive data
+
+## 📄 License
 
 MIT License
 
-## 👨‍💻 开发者
+## 👨‍💻 Developer
 
-使用 Claude Code 和 Expo 构建
+Built with Claude Code and Expo
+
+## 📚 Additional Documentation
+
+- [FINAL_SOLUTION.md](FINAL_SOLUTION.md) - Expo Go setup guide
+- [README_SETUP.md](README_SETUP.md) - Environment configuration
+- [SECURITY.md](SECURITY.md) - Security best practices
